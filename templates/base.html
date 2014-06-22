@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" type="text/css" href="theme/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="theme/css/screen.css" />
+
+    {% block head %}
+    {% endblock head %}
+
+</head>
+<body id="index" class="home">
+
+    <header id="site-head">
+        <a id="blog-logo" href="/"><div class="bloglogo" style="background: url(theme/images/logo.jpg)"></div></a>
+        <h1 class="blog-title">{{ SITENAME }}</h1>
+        <nav class="menu" role="nav">
+            <ul>
+                <li><a href="/">Blog</a></li>
+                <li><a href="">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="site-footer">
+        <div class="inner">
+            <section class="copyright">&copy; <a href="/">{{ SITENAME }}</a>. All rights reserved.</section>
+            <section>Vapor theme by <a href="http://sethlilly.com/">Seth Lilly</a></section>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="theme/js/index.js"></script>
+
+</body>
+</html>

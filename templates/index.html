@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="content" role="main">
+
+<ol id="post-list">
+{% for article in articles_page.object_list %}
+
+    <article class="preview">
+        <header>
+            <h1 class="post-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title|striptags }}</a></h1>
+            <div class="post-meta"><time datetime="{{ article.date|strftime('%YYYY-%MM-%DD') }}">{{ article.date|strftime('%A, %B %d, %Y') }}</time></div>
+        </header>
+        <section class="post-excerpt">
+            <p>{{ article.summary }}</p>
+            <p class="readmore"><a href="{{ SITEURL }}/{{ article.url}}">Read this article <i class="fa fa-chevron-circle-right"></i></a></p>
+        </section>
+    </article>
+
+{% endfor %}
+</ol><!-- /#posts-list -->
+{% include 'pagination.html' %}
+</section><!-- /#content -->
+{% endblock content %}
