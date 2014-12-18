@@ -90,8 +90,10 @@ a.archive-link,
   max-width: 600px;
   width: 90%;
 }
-#site-head img {
-  max-width: 100%;
+#site-head {
+padding: 100px 0px;
+color: #F8F8F8;
+background: url("http://abr4xas.github.io/sks-web/img/banner-bg.jpg") no-repeat scroll center center / cover transparent;
 }
 article.preview {
   margin-bottom: 4em;
