@@ -1,21 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css" href="theme/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="theme/css/screen.css" />
+    <link rel="publisher" href="{{ PUBLISHER }}"/>
+    <link rel="apple-touch-startup-image" href="{{ STARTUP_IMAGE }}">
+    <link type="text/plain" rel="socialmedia" href="{{ SITEURL }}/socialmedia.txt" />
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
-
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="pragma" content="cache" />
+    <meta http-equiv="cache-control" content ="cache" /> 
+    <meta http-equiv="vary" content="content-language" />
+    <meta http-equiv="content-style-type" content="text/css" />    
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="google-site-verification" content="{{ GOOGLE_SV }}" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="medium" content="mult">
+    <meta name="adblock" content="disable" />
+    <meta name="rating" content="General" />
+    <meta name="resource-type" content="document" />
+    <meta name="revisit-after" content="1 days" />
+    <meta name="revisit" content="1" />
+    <meta name="robots" content="index,follow" />
+    <meta name="no-email-collection" content="http://www.unspam.com/noemailcollection/" />
 
-    <link rel="stylesheet" type="text/css" href="theme/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="theme/css/screen.css" />
 
     {% block head %}
     {% endblock head %}
-
+{% if FEED_RSS %}
+    <link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+{% endif %}
 </head>
 <body id="index" class="home">
 
