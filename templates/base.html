@@ -1,31 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/screen.css" />
+    <link rel="publisher" href="{{ PUBLISHER }}"/>
+    <link rel="apple-touch-startup-image" href="{{ STARTUP_IMAGE }}">
+    <link type="text/plain" rel="socialmedia" href="{{ SITEURL }}/socialmedia.txt" />
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
-
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="pragma" content="cache" />
+    <meta http-equiv="cache-control" content ="cache" /> 
+    <meta http-equiv="vary" content="content-language" />
+    <meta http-equiv="content-style-type" content="text/css" />    
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="google-site-verification" content="{{ GOOGLE_SV }}" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="medium" content="mult">
+    <meta name="adblock" content="disable" />
+    <meta name="rating" content="General" />
+    <meta name="resource-type" content="document" />
+    <meta name="revisit-after" content="1 days" />
+    <meta name="revisit" content="1" />
+    <meta name="robots" content="index,follow" />
+    <meta name="no-email-collection" content="http://www.unspam.com/noemailcollection/" />
 
-    <link rel="stylesheet" type="text/css" href="theme/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="theme/css/screen.css" />
 
     {% block head %}
     {% endblock head %}
-
+{% if FEED_RSS %}
+    <link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+{% endif %}
 </head>
 <body id="index" class="home">
 
     <header id="site-head">
-        <a id="blog-logo" href="/"><div class="bloglogo" style="background: url(theme/images/logo.jpg)"></div></a>
-        <h1 class="blog-title">{{ SITENAME }}</h1>
+        <h1 class="blog-title"><a href="{{ SITEURL }}">{{ SITENAME }}</a></h1>
         <nav class="menu" role="nav">
             <ul>
-                <li><a href="/">Blog</a></li>
-                <li><a href="">About</a></li>
+                {% for p in PAGES %}
+                    <li><a href="{{ SITEURL }}/{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a></li>
+                {% endfor %}
+                <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}" title="Archives"> Archives</a></li>
             </ul>
         </nav>
     </header>
@@ -36,11 +57,20 @@
     <footer class="site-footer">
         <div class="inner">
             <section class="copyright">&copy; <a href="/">{{ SITENAME }}</a>. All rights reserved.</section>
-            <section>Vapor theme by <a href="http://sethlilly.com/">Seth Lilly</a></section>
+            <section>Vapor theme by <a href="http://sethlilly.com/" target="_blank">Seth Lilly</a></section>
         </div>
     </footer>
 
     <script type="text/javascript" src="theme/js/index.js"></script>
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', '{{GOOGLE_ANALYTICS}}', 'auto');
+      ga('send', 'pageview');
+    var _qevents = _qevents || [];
+</script>
 
 </body>
 </html>
