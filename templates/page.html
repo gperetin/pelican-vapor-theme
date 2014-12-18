@@ -1,9 +1,18 @@
 {% extends "base.html" %}
 {% block title %}{{ page.title }}{%endblock%}
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    {% import 'translations.html' as translations with context %}
-    {{ translations.translations_for(page) }}
 
-    {{ page.content }}
+
+    <article class="post">
+        <header>
+        <h1 class="post-title">{{ page.title|striptags }}</h1>
+        <div class="post-meta"><time datetime="{{ page.date|strftime('%YYYY-%MM-%DD') }}">{{ page.date|strftime('%A, %B %d, %Y') }}</time></div>
+        </header>
+
+        <section class="post-content">
+        {% import 'translations.html' as translations with context %}
+        {{ translations.translations_for(page) }}        
+        {{ page.content }}
+        </section>
+    </article>
 {% endblock %}
