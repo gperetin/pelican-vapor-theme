@@ -20,12 +20,14 @@
 <body id="index" class="home">
 
     <header id="site-head">
-        <a id="blog-logo" href="/"><div class="bloglogo" style="background: url(theme/images/logo.jpg)"></div></a>
+        <a id="blog-logo" href="{{ SITEURL }}"><div class="bloglogo" style="background: url(theme/images/logo.jpg)"></div></a>
         <h1 class="blog-title">{{ SITENAME }}</h1>
         <nav class="menu" role="nav">
             <ul>
-                <li><a href="/">Blog</a></li>
-                <li><a href="">About</a></li>
+                {% for p in PAGES %}
+                    <li><a href="{{ SITEURL }}/{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a></li>
+                {% endfor %}
+                <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}" title="{{ p.title }}"> Archives</a></li>
             </ul>
         </nav>
     </header>
