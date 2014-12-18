@@ -48,7 +48,7 @@
                 {% for p in PAGES %}
                     <li><a href="{{ SITEURL }}/{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a></li>
                 {% endfor %}
-                <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}" title="{{ p.title }}"> Archives</a></li>
+                <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}" title="Archives"> Archives</a></li>
             </ul>
         </nav>
     </header>
